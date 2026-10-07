@@ -1,8 +1,14 @@
-import streamlit as st
 from google import genai
 from google.genai import types
 from PIL import Image
 
+
+try:
+    import streamlit as st
+except ModuleNotFoundError:
+    reqs = Path(__file__).parent / "requirements.txt"
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", str(reqs)])
+    import streamlit as st
 
 st.set_page_config(
     page_title="CyberShield",
