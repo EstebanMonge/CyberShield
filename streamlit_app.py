@@ -35,7 +35,7 @@ st.set_page_config(
 # Configuration
 # ----------------------------------------------------------------------
 
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY") or st.secrets.get("GEMINI_API_KEY")
 
 if not GEMINI_API_KEY:
     st.error(
