@@ -1,13 +1,28 @@
+import subprocess
+import sys
+from pathlib import Path
+import os
+
+
+def _lanzar_streamlit():
+    sys.exit(subprocess.call([sys.executable, "-m", "streamlit", "run", __file__]))
+
+
 try:
     import streamlit as st
+    from streamlit import runtime
 except ModuleNotFoundError:
     reqs = Path(__file__).parent / "requirements.txt"
     subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", str(reqs)])
-    import streamlit as st
-    from google import genai
-    from google.genai import types
-    from PIL import Image
+    _lanzar_streamlit()
 
+if not runtime.exists():
+    # Se ejecutó con el botón Run: relanzar con "streamlit run"
+    _lanzar_streamlit()
+
+from google import genai
+from google.genai import types
+from PIL import Image
 
 st.set_page_config(
     page_title="CyberShield",
