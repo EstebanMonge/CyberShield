@@ -2,6 +2,7 @@
   "name": "Python 3.14",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
   "image": "mcr.microsoft.com/devcontainers/python:3-3.14-bookworm",
+  "postCreateCommand": "pip install --user -r requirements.txt",
   "customizations": {
     "codespaces": {
       "openFiles": [
